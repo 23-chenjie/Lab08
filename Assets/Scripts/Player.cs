@@ -17,9 +17,8 @@ public class Player : MonoBehaviour
 
         float verticalInput = Input.GetAxis("Vertical");
 
-        transform.position = transform.position + new Vector3(0 , verticalInput * speed * Time.deltaTime, 0);
+        transform.position = transform.position + new Vector3(0, verticalInput * speed * Time.deltaTime, 0);
 
-      
-
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -2.9f, 4.9f), transform.position.z);
     }
 }
