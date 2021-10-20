@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObstacleMovement : MonoBehaviour
 {
@@ -18,6 +19,18 @@ public class ObstacleMovement : MonoBehaviour
         if (transform.position.y < -5 || transform.position.x < -15)
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    public void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "addscore")
+        {
+            GameManager.instance.addscore(1);
+        }
+        else if (collider.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
